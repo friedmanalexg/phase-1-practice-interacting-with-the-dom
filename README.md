@@ -1,5 +1,5 @@
 # Interacting with the DOM using Events
-
+Something stupid.
 ## Learning Goals
 
 - Create event listeners on DOM nodes using `addEventListener()`
