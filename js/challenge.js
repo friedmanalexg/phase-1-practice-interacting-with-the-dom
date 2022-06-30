@@ -2,10 +2,16 @@
 
 const counter = document.getElementById("counter");
 
+
+
 //event listener for click on minus
-document.getElementById("minus").addEventListener("click",() => counter--);
+minus.addEventListener("click",function(){var a=document.getElementById("counter"),counterVal=parseInt(a.innerText);
+a.innerText=counterVal-1});
+
 //event listener for click on plus
-document.getElementById("plus").addEventListener("click",() => counter++);
+plus.addEventListener("click",function(){var a=document.getElementById("counter"),counterVal=parseInt(a.innerText);
+a.innerText=counterVal+1});
+
 
 document.getElementById("heart").addEventListener
 document.getElementById("pause").addEventListener
