@@ -18,9 +18,9 @@ plus.addEventListener("click", function() {
 
 //event listener for click on minus
 minus.addEventListener("click", function() {
-  var a=document.getElementById("counter")
-  counterVal=parseInt(a.innerText);
-  a.innerText=counterVal-1
+  const currentCounterAsAString = document.getElementById("counter");
+  const counter = parseInt(currentCounterAsAString.innerText);
+  currentCounterAsAString.innerText = counter - 1;
 });
 
 // ----Heart button functionality----
@@ -62,12 +62,40 @@ form.addEventListener('submit', (e) => {
 })
 
 // ----Functionality for Timer and Pause Button----
-const pause = document.getElementById("pause");
-let paused = false;
 
 // The return value of setInterval is a numeric identifier of
 // the current timer's value. This can be used to pause
 // the timed increments
+const pauseButton = document.getElementById('pause');
+let paused = false;
+
+pauseButton.addEventListener('click', () => {
+  const buttons = [plus, minus, heart]
+
+  if(paused) {
+    timerID = setInterval(() => {
+      increment()
+    }, 1000)
+    buttons.forEach(button => button.disabled = false)
+    pauseButton.innerText = 'pause'
+  } else {
+    buttons.forEach(button => button.disabled = true)
+    pauseButton.innerText = 'resume'
+    clearInterval(timerID)
+  }
+
+  paused = !paused
+})
+
+// ----Functionality for Reset Button----
+const resetButton = document.getElementById('reset')
+
+resetButton.addEventListener('click', () => {
+  // const currentCounterAsAString = document.getElementById('counter')
+  // currentCounterAsAString = 0
+  // clearInterval
+})
+
 let timerID = setInterval(() => {
   increment();
 }, 1000)
