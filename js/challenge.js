@@ -4,6 +4,10 @@ const minus = document.getElementById("minus");
 const heart = document.getElementById("heart");
 const commentsContainer = document.getElementById("list");
 const form = document.getElementById("comment-form");
+  
+let timerID = setInterval(() => {
+  increment()
+}, 1000)
 
 // ----Plus button functionality----
 function increment() {
@@ -85,17 +89,24 @@ pauseButton.addEventListener('click', () => {
   }
 
   paused = !paused
+  console.log(timerID, paused)
 })
 
 // ----Functionality for Reset Button----
 const resetButton = document.getElementById('reset')
 
 resetButton.addEventListener('click', () => {
-  // const currentCounterAsAString = document.getElementById('counter')
-  // currentCounterAsAString = 0
-  // clearInterval
-})
+  const buttons = [plus, minus, heart]
+  document.getElementById('counter').innerText = '0'
 
-let timerID = setInterval(() => {
-  increment();
-}, 1000)
+  if(paused) {
+    buttons.forEach(button => button.disabled = false)
+    pauseButton.innerText = 'pause'
+    paused = !paused
+    timerID = setInterval(() => {
+      increment()
+    }, 1000)
+  } else {
+    timerID = null
+  }
+})
